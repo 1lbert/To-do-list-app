@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { FaRegArrowAltCircleUp, FaRegArrowAltCircleDown } from "react-icons/fa";
 
 
 
 function ToDoListApp () { 
 
-    const [tasks, setTasks] = useState (["Workout", "Code", "Basketball"]); 
-    const [color, setColor] = useState()
+    const [tasks, setTasks] = useState (["Eat", "Sleep", "Code"]); 
+    // const [color, setColor] = useState()
 
 
     function handleClickAdd() {
@@ -55,6 +56,7 @@ function ToDoListApp () {
                 <div className="input-area">
                     <input 
                         type="text" 
+                        style={{textAlign:"center"}}
                         id="task-input"
                         placeholder="Enter a Task" />
                     <button onClick={handleClickAdd} >Add task</button>
@@ -63,17 +65,25 @@ function ToDoListApp () {
                     {tasks.map((task,index) => 
                         <li
                             key={index}
-                            style={{listStyleType:"none", backgroundColor:color}}
+                            // style={{backgroundColor:color}}
                         >   <span className="li-input">{task}</span>
                             <div className="li-button" >
+                                <button className="up-button" onClick={()=>handleClickUp(index)}><FaRegArrowAltCircleUp /></button>
+                                <button className="down-button" onClick={()=>handleClickDown(index)} ><FaRegArrowAltCircleDown /></button>
                                 <button className="del-button" onClick={()=>handleClickDelete(index)} >DEL</button>
-                                <button className="up-button" onClick={()=>handleClickUp(index)}>UP</button>
-                                <button className="down-button" onClick={()=>handleClickDown(index)} >DOWN</button>
-                                <button className="finish-button" onClick={()=>handleClickFinish()} >DONE</button>
+                                {/* <button className="finish-button" onClick={()=>handleClickFinish()} >DONE</button> */}
                             </div>
                         </li> 
                     )}
                 </ol>
+        </div>
+        <div className="footer">
+            <footer>
+                <div className="attribution">
+                    Coded by - <a href="https://github.com/1lbert" target="_blank">@1lbert</a>.
+                    @Year {new Date().getFullYear()}
+                </div>
+            </footer>
         </div>
 
         </>
