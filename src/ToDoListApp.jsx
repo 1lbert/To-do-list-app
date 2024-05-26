@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 
 function ToDoListApp () { 
 
-    const [tasks, setTasks] = useState ([]); 
-    
+    const [tasks, setTasks] = useState (["Workout", "Code", "Basketball"]); 
+    const [color, setColor] = useState()
+
 
     function handleClickAdd() {
         const taskInput = document.getElementById("task-input").value
@@ -13,8 +14,6 @@ function ToDoListApp () {
 
 
         taskInput && setTasks(t => [...t, taskInput])
-
-         
     }
     
 
@@ -44,7 +43,9 @@ function ToDoListApp () {
 
     }
 
-
+    function handleClickFinish () {
+        setColor ('#2f2f2f'); // I don't know how to change the bgcolor of the certain item only
+      };
 
 
     return(
@@ -55,8 +56,6 @@ function ToDoListApp () {
                     <input 
                         type="text" 
                         id="task-input"
-                        // value={tasks}
-                        // onChange={()=>handleInputChange(event)}
                         placeholder="Enter a Task" />
                     <button onClick={handleClickAdd} >Add task</button>
                 </div>
@@ -64,12 +63,13 @@ function ToDoListApp () {
                     {tasks.map((task,index) => 
                         <li
                             key={index}
-                            style={{listStyleType:"none"}}
+                            style={{listStyleType:"none", backgroundColor:color}}
                         >   <span className="li-input">{task}</span>
                             <div className="li-button" >
                                 <button className="del-button" onClick={()=>handleClickDelete(index)} >DEL</button>
                                 <button className="up-button" onClick={()=>handleClickUp(index)}>UP</button>
                                 <button className="down-button" onClick={()=>handleClickDown(index)} >DOWN</button>
+                                <button className="finish-button" onClick={()=>handleClickFinish()} >DONE</button>
                             </div>
                         </li> 
                     )}
