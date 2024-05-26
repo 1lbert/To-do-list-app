@@ -44,7 +44,7 @@ function ToDoListApp () {
     }
 
     function handleClickFinish () {
-        setColor ('#2f2f2f'); // I don't know how to change the bgcolor of the certain item only
+        // setColor ('#2f2f2f'); I don't know how to change the bgcolor of the certain item only
       };
 
 
