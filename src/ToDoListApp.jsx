@@ -5,7 +5,7 @@ import { FaRegArrowAltCircleUp, FaRegArrowAltCircleDown } from "react-icons/fa";
 
 function ToDoListApp () { 
 
-    const [tasks, setTasks] = useState (["Eat", "Sleep", "Code"]); 
+    const [tasks, setTasks] = useState (["Eat", "Sleep", "Code", "Repeat"]); 
     // const [color, setColor] = useState()
 
 
